@@ -9,16 +9,23 @@ let marksSchema = new mongoose.Schema({
         trim:true
     },
 
-    Subject :{
+Subject :{
         type:String,
         required:true,
         trim:true
     },
-    Marks:{
+Marks:{
         type:Number,
         required:true,
         trim:true
 
+    },
+    deletedAt: {
+        type:Date
+    }, 
+    isDeleted: {
+        type:Boolean, 
+        default: false
     }
 },{timestamps:true})
 
