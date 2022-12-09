@@ -9,7 +9,7 @@ app.use(express.json())
 const port = process.env.PORT 
 DB();
 
-app.use('/',route)
+app.use('/api',route)
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
