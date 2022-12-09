@@ -17,7 +17,7 @@ route.post('/login',login)
 
 route.post('/addStudentMarks',addMarks)
 
-route.get('/filterData',getByFilter)
+route.get('/studentList',getByFilter)
 
 route.put('/updateStudentMarks',updateMarks)
 

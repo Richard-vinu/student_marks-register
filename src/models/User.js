@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 let userSchema = new mongoose.Schema({
 
-    userName:{
+    teacher:{
         type:String,
         required:true,
         trim:true

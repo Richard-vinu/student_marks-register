@@ -100,8 +100,6 @@ const deleteMarks = async function (req, res) {
       return res.status(404).send({ status: false, msg: `marks already deleted.` })
 
 
-
-
     await markSheet.findOneAndUpdate({ _id: findStudent._id },
       {
         isDeleted: true,

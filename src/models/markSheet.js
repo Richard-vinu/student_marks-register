@@ -20,6 +20,13 @@ Marks:{
         trim:true
 
     },
+
+EvaluatedBy:{
+    type:String,
+        required:true,
+        trim:true
+
+},
     deletedAt: {
         type:Date
     }, 
