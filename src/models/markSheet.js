@@ -3,25 +3,25 @@ import mongoose from "mongoose";
 
 let marksSchema = new mongoose.Schema({
 
- Name:{
+ ame:{
         type:String,
         required:true,
         trim:true
     },
 
-Subject :{
+subject :{
         type:String,
         required:true,
         trim:true
     },
-Marks:{
+marks:{
         type:Number,
         required:true,
         trim:true
 
     },
 
-EvaluatedBy:{
+teacher:{
     type:String,
         required:true,
         trim:true
