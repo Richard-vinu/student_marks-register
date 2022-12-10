@@ -3,6 +3,12 @@ import mongoose from "mongoose";
 
 let marksSchema = new mongoose.Schema({
 
+ name:{
+        type:String,
+        required:true,
+        trim:true
+    },
+
 subject :{
         type:String,
         required:true,
