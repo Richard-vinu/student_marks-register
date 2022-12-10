@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 let marksSchema = new mongoose.Schema({
 
- ame:{
+ name:{
         type:String,
         required:true,
         trim:true
