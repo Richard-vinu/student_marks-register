@@ -18,16 +18,15 @@ route.post('/signup',signUp)
 
 route.post('/login',login)
 
-route.post('/addStudentMarks',Authn,Authz,addMarks)
+route.post('/addStudentMarks',Authn,addMarks)
 
-route.get('/studentList',getByFilter)
+route.get('/studentList',Authn,getByFilter)
 
-route.put('/updateStudentMarks/:studentId',updateMarks)
+route.put('/updateStudentMarks/:studentId/:markedBy',Authn,updateMarks)
 
 route.delete('/deleteStudentMarks/:studentName',deleteMarks)
 
 
-// route.get('/student/:name/marks',viewMarks)
 
 
 export default route

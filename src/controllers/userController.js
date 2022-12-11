@@ -9,9 +9,9 @@ const signUp = async (req, res) => {
     try {
       const data = req.body;
  
-      let {userName, email, password } = data;
+      let {Tname, email, password } = data;
   
-      if (!userName)
+      if (!Tname)
         return res.status(400).send({ status: false, message: `Username is Required` });
   
       if (!email)

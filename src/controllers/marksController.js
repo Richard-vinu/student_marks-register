@@ -6,27 +6,27 @@ const addMarks = async (req, res) => {
   try {
     const data = req.body;
 
-    let { Name, Subject, Marks } = data;
+    let { Stname, subject, marks } = data;
 
-    if (!Name)
+    if (!Stname)
       return res.status(400).send({ status: false, message: `Name is Required` });
 
-    if (!Subject)
+    if (!subject)
       return res.status(400).send({ status: false, message: `Subject is Required` });
 
-    if (!Marks)
+    if (!marks)
       return res.status(400).send({ status: false, message: `Marks is Required` });
 
-    let existName = await markSheet.findOne({ Name: Name });
+    let existName = await markSheet.findOne({ Stname: Stname });
 
     if (existName) {
 
-      let Totalmarks = existName.Marks + req.body.Marks
+      let Totalmarks = existName.marks + req.body.marks
 
       let updatedMarks = {
 
-        Subject: req.body.Subject,
-        Marks: Totalmarks,    //1
+        Subject: req.body.subject,
+        marks: Totalmarks,    //1
       };
 
       let responseData = await markSheet.findOneAndUpdate(
@@ -56,7 +56,8 @@ const getByFilter = async (req, res) => {
   try {
     const user_id = req.params.userId;
 
-    const user = await userModel.findById(user_id);
+    const user = await markSheet.find({markedBy:req.token.userId }).populate('markedBy',{select:{password:0}})
+    // const user = await userModel.findById(user_id);
 
     res.status(200).send({ status: true, message: "User profile details", data: user });
   } catch (error) {
@@ -70,10 +71,15 @@ const getByFilter = async (req, res) => {
 const updateMarks = async (req, res) => {
   try {
     const user_id = req.params.studentId;
+    const markedById = req.params.markedBy;
 
-    let data = req.body
+    if(markedById!=req.token.userId)
+    return res.status(403).send({ status: false, message:"Forbidden" });
 
-    const user = await markSheet.findOneAndUpdate({_id:user_id},{data});
+    let data = req.body.Stname
+    let data1 = req.body.subject
+
+    const user = await markSheet.findOneAndUpdate({_id:user_id},{$set:{Stname:data,subject:data1}},{new:true});
 
     res.status(200).send({ status: true, message: "User profile details", data: user });
   } catch (error) {

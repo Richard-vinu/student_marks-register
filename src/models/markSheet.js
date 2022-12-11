@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-
+let ObjectId = mongoose.Schema.ObjectId
 
 let marksSchema = new mongoose.Schema({
 
- name:{
+ Stname:{
         type:String,
         required:true,
         trim:true
@@ -21,8 +21,9 @@ marks:{
 
     },
 
-teacher:{
-    type:String,
+markedBy:{
+        type:ObjectId,
+        ref:'User',
         required:true,
         trim:true
 
