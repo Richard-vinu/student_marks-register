@@ -69,9 +69,11 @@ const getByFilter = async (req, res) => {
 //!updateMarks
 const updateMarks = async (req, res) => {
   try {
-    const user_id = req.params.userId;
+    const user_id = req.params.studentId;
 
-    const user = await userModel.findById(user_id);
+    let data = req.body
+
+    const user = await markSheet.findOneAndUpdate({_id:user_id},{data});
 
     res.status(200).send({ status: true, message: "User profile details", data: user });
   } catch (error) {

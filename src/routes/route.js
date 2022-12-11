@@ -4,6 +4,9 @@ const route = express.Router()
 
 import {signUp,login} from '../controllers/userController.js'
 
+import {Authn,Authz} from '../utils/auth.js'
+
+
 import {addMarks,getByFilter,updateMarks,deleteMarks,viewMarks} from '../controllers/marksController.js';
 
 //! Testing route
@@ -15,11 +18,11 @@ route.post('/signup',signUp)
 
 route.post('/login',login)
 
-route.post('/addStudentMarks',addMarks)
+route.post('/addStudentMarks',Authn,Authz,addMarks)
 
 route.get('/studentList',getByFilter)
 
-route.put('/updateStudentMarks',updateMarks)
+route.put('/updateStudentMarks/:studentId',updateMarks)
 
 route.delete('/deleteStudentMarks/:studentName',deleteMarks)
 
